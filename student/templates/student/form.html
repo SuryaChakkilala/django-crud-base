@@ -1,5 +1,26 @@
 {% extends 'student/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<p>crud</p>
+<form action="" method="POST" autocomplete="off">
+    {% csrf_token %}
+    {{form.first_name}}<br><br>
+    {{form.last_name}}<br><br>
+    {{form.mobile}}<br><br>
+    Address:<br>
+    {{form.address}}<br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script>
+var form_fields = document.getElementsByTagName('input')
+form_fields[1].placeholder='First Name..';
+form_fields[2].placeholder='Last Name..';
+form_fields[3].placeholder='Mobile Number...';
+form_fields[4].placeholder='Full Address...';
+
+
+for (var field in form_fields){	
+form_fields[field].className += ' form-control'
+}
+</script>
 {% endblock %}
